@@ -142,7 +142,7 @@ public class Main extends Application {
 		//testFile();
 		
 		Main.nouveau = false;
-		Main.play = false;
+		play = false;
 		Main.renaming = false;
 		Main.sub = false;
 		
@@ -204,14 +204,14 @@ public class Main extends Application {
 			}
 		} else if (Main.renaming) {
 			endRename();
-		} else if(Main.play) {
+		} else if(play) {
 			Main.pause();
 			save();
 		} else if(Main.current==null) {
 			nouveau=true;
 			initNewProject();
 		} else {
-			Main.play();
+			play();
 		}
 	}
 	
@@ -234,7 +234,7 @@ public class Main extends Application {
 				save();
 				display.displayRefresh();
 				//pause();
-				if(Main.play)Main.play();
+				if(play)play();
 				else Main.pause();
 			} else {
 				tempRename = display.getTempRename();
@@ -261,7 +261,7 @@ public class Main extends Application {
 	public static void endReText() {
 		if(!nouveau&&!sub) {
 			Main.current.setText(display.getReTextFld());
-			if(Main.play)Main.play();
+			if(play)play();
 			else Main.pause();
 			save();
 			display.displayRefresh();
