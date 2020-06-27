@@ -427,6 +427,7 @@ public class Main extends Application {
 				if(isLeafOf(Main.currentTreeItem,Main.selectedTreeItem)) {
 					Main.current=null;
 				}
+				rootItem.getChildren().remove(selectedTreeItem);
 				Main.selected=null;
 				File toDeleteFile = new File(Main.res+fileName);
 				toDeleteFile.delete();
@@ -435,16 +436,22 @@ public class Main extends Application {
 				if(isLeafOf(Main.currentTreeItem,Main.selectedTreeItem)) {
 					Main.current=null;
 				}
-				Main.selectedTreeItem.getParent().getValue().children.remove(Main.selected);
-				Main.selected = Main.selectedTreeItem.getParent().getValue();
-				Main.selectedTreeItem = Main.selectedTreeItem.getParent();
+				
+				TreeItem<Tache> newSelected = selectedTreeItem.getParent();
+				
+				newSelected.getValue().children.remove(selected);
+				newSelected.getChildren().remove(selectedTreeItem);
+				
+				Main.selectedTreeItem = newSelected;
+				Main.selected = selectedTreeItem.getValue();
+				
 				try {
 					Main.saveObject(Main.selectedProject);
 				} catch (IOException e) {
 					System.out.println("Un pb lors de l'enregistrement !!");
 					e.printStackTrace();
 				}
-				load(Main.selectedTreeItem);
+				//load(Main.selectedTreeItem);
 				display.arborescence.refresh();
 				display.updateSelection();
 			}
