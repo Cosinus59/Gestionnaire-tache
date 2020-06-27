@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ChronoControlleur">
+   <children>
+      <SplitPane fx:id="main" dividerPositions="0.6238437821171634" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="595.0" prefWidth="975.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <items>
+            <VBox alignment="BOTTOM_CENTER" onKeyPressed="#leftEscape" prefHeight="200.0" prefWidth="100.0" spacing="15.0">
+               <children>
+                  <StackPane>
+                     <children>
+                        <Label fx:id="nameLbl" text="Nom de la tâche">
+                           <contextMenu>
+                              <ContextMenu fx:id="nameMenu">
+                                 <items>
+                                    <MenuItem fx:id="nameEditBtn" mnemonicParsing="false" onAction="#pressedRename" text="Renommer" />
+                                 </items>
+                              </ContextMenu>
+                           </contextMenu>
+                           <font>
+                              <Font size="40.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="renameFld" alignment="CENTER" disable="true" focusTraversable="false" maxWidth="500.0" onAction="#endRename" onKeyPressed="#cancelRenameRequested" promptText="Nouveau Nom" visible="false">
+                           <font>
+                              <Font size="40.0" />
+                           </font>
+                           <padding>
+                              <Insets top="-1.0" />
+                           </padding>
+                        </TextField>
+                     </children>
+                  </StackPane>
+                  <Label fx:id="projectNameLbl" alignment="CENTER" text="Nom du projet (si sous-tâche)" textAlignment="CENTER">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="20.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label fx:id="chronoLbl" text="02:25:53">
+                     <font>
+                        <Font size="40.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="300.0">
+                     <children>
+                        <Label fx:id="textLbl" alignment="TOP_LEFT" lineSpacing="1.0" maxHeight="100.0" prefHeight="100.0" prefWidth="300.0" text="Lorem ipsum dolor sit amet," textOverrun="WORD_ELLIPSIS" wrapText="true">
+                           <contextMenu>
+                              <ContextMenu fx:id="textMenu">
+                                 <items>
+                                    <MenuItem fx:id="textEditBtn" mnemonicParsing="false" onAction="#requestReText" text="Éditer" />
+                                 </items>
+                              </ContextMenu>
+                           </contextMenu>
+                        </Label>
+                        <TextArea fx:id="reTextFld" disable="true" onKeyPressed="#endReTextRequest" prefHeight="100.0" prefWidth="300.0" promptText="Notes, commentaires..." visible="false" wrapText="true" />
+                     </children>
+                     <padding>
+                        <Insets left="120.0" right="120.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </StackPane>
+                  <GridPane>
+                     <children>
+                        <Label fx:id="startDateLbl" text="Commencé le 35 janvier à 15H00 ">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets left="30.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label fx:id="projectTimeLbl" alignment="CENTER" text="00:00" GridPane.columnIndex="1">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets right="10.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label fx:id="totalLbl" text="Temps total du projet" GridPane.columnIndex="2">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="283.0" minWidth="10.0" prefWidth="283.0" />
+                        <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="193.0" minWidth="10.0" prefWidth="146.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="153.0" minWidth="10.0" prefWidth="153.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                  </GridPane>
+                  <SplitMenuButton fx:id="startMenu" alignment="CENTER" mnemonicParsing="false" onAction="#pressedStart" prefHeight="53.0" prefWidth="260.0" text="Démarrer" textAlignment="CENTER">
+                     <font>
+                        <Font size="21.0" />
+                     </font>
+                     <items>
+                        <MenuItem fx:id="playBtn" mnemonicParsing="false" onAction="#pressedStart" text="Démarrer" />
+                        <MenuItem fx:id="renameBtn" mnemonicParsing="false" onAction="#pressedRename" text="Renommer" />
+                        <MenuItem fx:id="subBtn" mnemonicParsing="false" onAction="#pressedSub" text="Créer une sous-tâche" />
+                        <MenuItem fx:id="newProjectBtn" mnemonicParsing="false" onAction="#pressedNewProject" text="Créer un nouveau Projet" />
+                        <MenuItem fx:id="deleteBtn" mnemonicParsing="false" onAction="#pressedDelete" text="Supprimer" />
+                     </items>
+                     <VBox.margin>
+                        <Insets bottom="50.0" />
+                     </VBox.margin>
+                  </SplitMenuButton>
+               </children>
+            </VBox>
+            <VBox fx:id="VBoxRight" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <TreeView fx:id="arborescence" prefHeight="249.0" prefWidth="283.0" showRoot="false">
+                     <VBox.margin>
+                        <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
+                     </VBox.margin>
+                  </TreeView>
+                  <StackPane>
+                     <children>
+                        <Label fx:id="selectedNameLbl" text="Name">
+                           <contextMenu>
+                              <ContextMenu>
+                                 <items>
+                                    <MenuItem mnemonicParsing="false" onAction="#pressedSelectedRename" text="Renommer" />
+                                 </items>
+                              </ContextMenu>
+                           </contextMenu>
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="selectedRenameFld" alignment="CENTER" disable="true" maxWidth="-Infinity" onAction="#endRenameSelected" prefWidth="300.0" promptText="Nouveau nom" visible="false">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <padding>
+                              <Insets top="-1.0" />
+                           </padding>
+                           <StackPane.margin>
+                              <Insets />
+                           </StackPane.margin>
+                        </TextField>
+                     </children>
+                  </StackPane>
+                  <Label fx:id="selectedProjectNameLbl" text="ProjectName">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="selectedTimeLlb" text="time">
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin></Label>
+                  <StackPane maxHeight="122.0" maxWidth="300.0" prefHeight="122.0" prefWidth="300.0">
+                     <children>
+                        <Label fx:id="selectedTextLbl" alignment="TOP_LEFT" prefHeight="115.0" prefWidth="275.0" text="text" textOverrun="WORD_ELLIPSIS" wrapText="true">
+                           <contextMenu>
+                              <ContextMenu fx:id="selectedTextMenu">
+                                 <items>
+                                    <MenuItem mnemonicParsing="false" onAction="#requestSelectedReText" text="Éditer" />
+                                 </items>
+                              </ContextMenu>
+                           </contextMenu>
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                           <StackPane.margin>
+                              <Insets top="10.0" />
+                           </StackPane.margin>
+                        </Label>
+                        <TextArea fx:id="selectedReTextFld" disable="true" onKeyPressed="#endSelectedReText" promptText="Notes, commentaires..." visible="false" wrapText="true" />
+                     </children>
+                  </StackPane>
+                  <HBox alignment="CENTER" maxWidth="-Infinity" prefHeight="25.0" prefWidth="297.0" spacing="150.0">
+                     <children>
+                        <Button fx:id="loadBtn" disable="true" mnemonicParsing="false" onAction="#loadSelectedRequest" text="Ouvrir">
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </Button>
+                        <MenuButton fx:id="rightMenu" mnemonicParsing="false" popupSide="TOP" text="Gestion">
+                           <items>
+                              <MenuItem fx:id="selectedLoadBtn" mnemonicParsing="false" onAction="#loadSelectedRequest" text="Ouvrir" />
+                              <MenuItem fx:id="selectedRenameBtn" mnemonicParsing="false" onAction="#pressedSelectedRename" text="Renommer" />
+                              <MenuItem mnemonicParsing="false" onAction="#pressedSelectedDelete" text="Supprimer" />
+                           </items>
+                        </MenuButton>
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+            </VBox>
+         </items>
+      </SplitPane>
+      <BorderPane fx:id="WarningMsg" disable="true" layoutX="364.0" layoutY="239.0" prefHeight="117.0" prefWidth="248.0" visible="false">
+         <center>
+            <Label fx:id="WarningLbl" text="Voulez vous supprimer ce projet ?" BorderPane.alignment="CENTER" />
+         </center>
+         <bottom>
+            <HBox alignment="CENTER" prefHeight="48.0" prefWidth="248.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button mnemonicParsing="false" prefWidth="58.0" text="Oui">
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin></Button>
+                  <Button mnemonicParsing="false" text="Annuler">
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin></Button>
+               </children>
+               <BorderPane.margin>
+                  <Insets bottom="5.0" />
+               </BorderPane.margin>
+            </HBox>
+         </bottom>
+      </BorderPane>
+   </children>
+</AnchorPane>

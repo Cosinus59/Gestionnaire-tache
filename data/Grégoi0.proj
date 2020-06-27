@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="1.8.0_241" class="java.beans.XMLDecoder">
+ <object class="application.Tache" id="Tache0">
+  <void class="application.Tache" method="getField">
+   <string>children</string>
+   <void method="set">
+    <object idref="Tache0"/>
+    <object class="java.util.ArrayList">
+     <void method="add">
+      <object class="application.Tache" id="Tache1">
+       <void class="application.Tache" method="getField">
+        <string>children</string>
+        <void method="set">
+         <object idref="Tache1"/>
+         <object class="java.util.ArrayList">
+          <void method="add">
+           <object class="application.Tache" id="Tache2">
+            <void class="application.Tache" method="getField">
+             <string>children</string>
+             <void method="set">
+              <object idref="Tache2"/>
+              <object class="java.util.ArrayList"/>
+             </void>
+            </void>
+            <void property="level">
+             <int>2</int>
+            </void>
+            <void property="name">
+             <string>Sous partie 1</string>
+            </void>
+            <void property="startDate">
+             <string>10 Juin 2020</string>
+            </void>
+            <void property="text">
+             <string></string>
+            </void>
+            <void property="time">
+             <long>68</long>
+            </void>
+           </object>
+          </void>
+          <void method="add">
+           <object class="application.Tache" id="Tache3">
+            <void class="application.Tache" method="getField">
+             <string>children</string>
+             <void method="set">
+              <object idref="Tache3"/>
+              <object class="java.util.ArrayList"/>
+             </void>
+            </void>
+            <void property="level">
+             <int>2</int>
+            </void>
+            <void property="name">
+             <string>Sous partie 2</string>
+            </void>
+            <void property="startDate">
+             <string>10 Juin 2020</string>
+            </void>
+            <void property="text">
+             <string></string>
+            </void>
+            <void property="time">
+             <long>23</long>
+            </void>
+           </object>
+          </void>
+         </object>
+        </void>
+       </void>
+       <void property="level">
+        <int>1</int>
+       </void>
+       <void property="name">
+        <string>chapitre 1</string>
+       </void>
+       <void property="startDate">
+        <string>10 Juin 2020</string>
+       </void>
+       <void property="text">
+        <string>Il était une fois...</string>
+       </void>
+       <void property="time">
+        <long>249</long>
+       </void>
+      </object>
+     </void>
+     <void method="add">
+      <object class="application.Tache" id="Tache4">
+       <void class="application.Tache" method="getField">
+        <string>children</string>
+        <void method="set">
+         <object idref="Tache4"/>
+         <object class="java.util.ArrayList"/>
+        </void>
+       </void>
+       <void property="level">
+        <int>1</int>
+       </void>
+       <void property="name">
+        <string>Chapitre 2 !!</string>
+       </void>
+       <void property="startDate">
+        <string>10 Juin 2020</string>
+       </void>
+       <void property="text">
+        <string></string>
+       </void>
+       <void property="time">
+        <long>834</long>
+       </void>
+      </object>
+     </void>
+    </object>
+   </void>
+  </void>
+  <void property="fileName">
+   <string>Grégoi0.proj</string>
+  </void>
+  <void property="name">
+   <string>Écriture de mon livre</string>
+  </void>
+  <void property="startDate">
+   <string>10 Juin 2020</string>
+  </void>
+  <void property="text">
+   <string>Il était une fois...</string>
+  </void>
+  <void property="time">
+   <long>95</long>
+  </void>
+ </object>
+</java>
