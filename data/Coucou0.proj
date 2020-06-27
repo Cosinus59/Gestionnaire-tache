@@ -5,31 +5,7 @@
    <string>children</string>
    <void method="set">
     <object idref="Tache0"/>
-    <object class="java.util.ArrayList">
-     <void method="add">
-      <object class="application.Tache" id="Tache1">
-       <void class="application.Tache" method="getField">
-        <string>children</string>
-        <void method="set">
-         <object idref="Tache1"/>
-         <object class="java.util.ArrayList"/>
-        </void>
-       </void>
-       <void property="level">
-        <int>1</int>
-       </void>
-       <void property="name">
-        <string>aquecoucou</string>
-       </void>
-       <void property="startDate">
-        <string>26 Juin 2020</string>
-       </void>
-       <void property="text">
-        <string></string>
-       </void>
-      </object>
-     </void>
-    </object>
+    <object class="java.util.ArrayList"/>
    </void>
   </void>
   <void property="fileName">

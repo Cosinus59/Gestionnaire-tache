@@ -377,6 +377,7 @@ public class Main extends Application {
 		display.cancelNewProjectDisplay();
 	}
 	
+	
 	public static void selectedDelete() {
 		Main.deletecurrent = false;
 		confirmDelete();
@@ -399,16 +400,22 @@ public class Main extends Application {
 		// oui le bouton n'est pas beau
 		closeWarning();
 		if(Main.deletecurrent) {
+			pause();
 			if(Main.current==Main.currentProject) {
 				String fileName = Main.currentProject.getFileName();
 				Main.current=null;
 				File toDeleteFile = new File(Main.res+fileName);
 				toDeleteFile.delete();
+				Main.updateFile();
 			} else {
 				save();
-				Main.currentTreeItem.getParent().getValue().children.remove(Main.current);
-				Main.current = Main.currentTreeItem.getParent().getValue();
-				Main.currentTreeItem = Main.currentTreeItem.getParent();
+				TreeItem<Tache> newOne = currentTreeItem.getParent();
+				
+				newOne.getValue().children.remove(Main.current);
+				newOne.getChildren().remove(currentTreeItem);
+				
+				Main.currentTreeItem = newOne;
+				Main.current = currentTreeItem.getValue();
 				Main.time=Main.current.getTime();
 				unSelect();
 				display.updateSelection();
@@ -442,7 +449,8 @@ public class Main extends Application {
 				display.updateSelection();
 			}
 		}
-		Main.updateFile();
+		//Main.updateFile();
+		display.arborescence.refresh();
 		display.updateSelection();
 		display.displayRefresh();
 		Main.deletecurrent = false;

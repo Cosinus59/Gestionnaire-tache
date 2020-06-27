@@ -409,9 +409,6 @@ public class ChronoControlleur {
 	}
 	
 	public void unSelectDisplay() { // pour déselectionner l'item
-		Main.selected = null;
-		Main.selectedTreeItem = null;
-		Main.selectedProject = null;
 		loadBtn.setDisable(true);
 		rightMenu.setDisable(true);
 		selectedTimeLlb.setDisable(true);
@@ -424,6 +421,8 @@ public class ChronoControlleur {
 		selectedTextLbl.setDisable(true);
 		arborescence.getSelectionModel().clearSelection();
 	}
+	
+	
 	
 	public void selectedReText() {
 		selectedReTextFld.setText(selectedTextLbl.getText());
