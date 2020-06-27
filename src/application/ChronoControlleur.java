@@ -527,6 +527,7 @@ public class ChronoControlleur {
 			startDateLbl.setText(startedAt(Main.startDate));
 			newProjectBtn.setDisable(false);
 			subBtn.setDisable(false);
+			playBtn.setDisable(false);
 			deleteBtn.setText("supprimer");
 			deleteBtn.setDisable(false);
 		}
