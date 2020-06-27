@@ -78,7 +78,7 @@
         <string>10 Juin 2020</string>
        </void>
        <void property="text">
-        <string>Il était une fois...</string>
+        <string>Il était toujours une fois...</string>
        </void>
        <void property="time">
         <long>249</long>
@@ -104,7 +104,7 @@
         <string>10 Juin 2020</string>
        </void>
        <void property="text">
-        <string></string>
+        <string>Il était encore une fois</string>
        </void>
        <void property="time">
         <long>834</long>

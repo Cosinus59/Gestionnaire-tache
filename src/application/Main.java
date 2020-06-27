@@ -616,6 +616,7 @@ public class Main extends Application {
 	}
 	
 	public static String makeFileName(Tache proj) {
+		
 		String res;
 		int idx = 0;
 		
@@ -623,6 +624,8 @@ public class Main extends Application {
 		do {
 			if(proj.getName().length()<6)res = proj.getName()+idx+".proj";
 			else res = proj.getName().substring(0, 6)+idx+".proj";
+			res = res.replaceAll("[\\\\/:*?\"<>|]", "_");
+			//System.out.println(res);
 			f = new File(Main.res+res);
 			idx++;
 			//System.out.println("test");
