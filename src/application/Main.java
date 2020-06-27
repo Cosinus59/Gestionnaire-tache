@@ -146,7 +146,7 @@ public class Main extends Application {
 		Main.renaming = false;
 		Main.sub = false;
 		
-		Main.updateFile();
+		updateFile();
 		display.displayDisabled();
 		
 		Main.timeline = new Timeline(new KeyFrame(Duration.seconds(1), e -> {
