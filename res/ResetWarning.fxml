@@ -11,7 +11,7 @@
 
 <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="330.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.PopupControlleur">
    <children>
-      <Label text="Voulez-vous supprimer cette tâche ?">
+      <Label text="Voulez-vous redémarrer cette tâche ?">
          <VBox.margin>
             <Insets top="50.0" />
          </VBox.margin>

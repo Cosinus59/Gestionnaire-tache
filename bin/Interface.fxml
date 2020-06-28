@@ -111,7 +111,7 @@
                         <Font size="21.0" />
                      </font>
                      <items>
-                        <MenuItem fx:id="playBtn" mnemonicParsing="false" onAction="#pressedStart" text="Démarrer" />
+                        <MenuItem fx:id="resetBtn" mnemonicParsing="false" onAction="#pressedReset" text="Redémarrer" />
                         <MenuItem fx:id="renameBtn" mnemonicParsing="false" onAction="#pressedRename" text="Renommer" />
                         <MenuItem fx:id="subBtn" mnemonicParsing="false" onAction="#pressedSub" text="Créer une sous-tâche" />
                         <MenuItem fx:id="newProjectBtn" mnemonicParsing="false" onAction="#pressedNewProject" text="Créer un nouveau Projet" />

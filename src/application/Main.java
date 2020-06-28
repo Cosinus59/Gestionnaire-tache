@@ -39,7 +39,8 @@ public class Main extends Application {
 	static String res = "data"+File.separator;
 	
 	static ChronoControlleur display;
-	static DeleteControlleur delete;
+	static PopupControlleur delete;
+	static PopupControlleur reset;
 	
     static long time = 0;
 	static long chrono;
@@ -48,9 +49,11 @@ public class Main extends Application {
 	static String startDate;
 	static boolean nouveau;
 	static boolean renaming;
+	static boolean deleting;
 	static boolean sub;
 	static boolean deletecurrent;
 	static boolean firstName;
+	static boolean reseting;
 	static String tempReText;
 	static String tempRename;
 	static ArrayList<String> filteredFileList;
@@ -74,7 +77,7 @@ public class Main extends Application {
 	
 	static Stage noName = new Stage();
 	static Stage deleteWarning = new Stage();
-	
+	static Stage resetWarning = new Stage();
 	
 	
 	@Override
@@ -114,7 +117,7 @@ public class Main extends Application {
 		
 		FXMLLoader loaderDeleteWarning = new FXMLLoader();
 		loaderDeleteWarning.setLocation(getClass().getResource("/DeleteWarning.fxml"));
-		delete = (DeleteControlleur) loaderDeleteWarning.getController();
+		delete = (PopupControlleur) loaderDeleteWarning.getController();
 		deleteWarning.setScene(new Scene(loaderDeleteWarning.load()));
 		
 		deleteWarning.getIcons().add(ico);
@@ -123,7 +126,16 @@ public class Main extends Application {
 		deleteWarning.initOwner(stage);
 		deleteWarning.initModality(Modality.WINDOW_MODAL);
 		
+		FXMLLoader loaderResetWarning = new FXMLLoader();
+		loaderResetWarning.setLocation(getClass().getResource("/ResetWarning.fxml"));
+		reset = (PopupControlleur) loaderResetWarning.getController();
+		resetWarning.setScene(new Scene(loaderResetWarning.load()));
 		
+		resetWarning.getIcons().add(ico);
+		resetWarning.setTitle("Redémarrage de la tâche");
+		resetWarning.setResizable(false);
+		resetWarning.initOwner(stage);
+		resetWarning.initModality(Modality.WINDOW_MODAL);
 		
 		
 
@@ -177,6 +189,14 @@ public class Main extends Application {
 		}
 	}
 
+	public static void answerYes() {
+		if(deleting) {
+			Main.deleteProject();
+		} else if(reseting) {
+			timeReset();
+		}
+	}
+	
 	public static void pause() {
 		timeline.pause();
 		play = false;
@@ -215,6 +235,20 @@ public class Main extends Application {
 		}
 	}
 	
+	public static void timeResetRequest() {
+		reseting = true;
+		pause();
+		resetWarning.show();
+	}
+	
+	public static void timeReset() {
+		closeWarning();
+		chronoStack();
+		time = 0;
+		save();
+		display.displayRefresh();
+		display.demarrer();
+	}
 	
 	public static void rename(boolean initNew) {
 		Main.pause();
@@ -389,11 +423,13 @@ public class Main extends Application {
 	}
 	
 	public static void confirmDelete() {
+		deleting = true;
 		deleteWarning.show();
 	}
 	
 	public static void closeWarning() {
 		Main.deleteWarning.close();
+		Main.resetWarning.close();
 	}
 	
 	public static void deleteProject() {
@@ -461,6 +497,7 @@ public class Main extends Application {
 		display.updateSelection();
 		display.displayRefresh();
 		Main.deletecurrent = false;
+		deleting = false;
 		
 	}
 	

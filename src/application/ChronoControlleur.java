@@ -51,7 +51,7 @@ public class ChronoControlleur {
 	@FXML
 	MenuButton rightMenu;
 	@FXML
-	MenuItem playBtn,renameBtn,subBtn,newProjectBtn,deleteBtn;
+	MenuItem resetBtn,renameBtn,subBtn,newProjectBtn,deleteBtn;
 	@FXML
 	MenuItem selectedLoadBtn,selectedRenameBtn;
 	@FXML
@@ -150,6 +150,11 @@ public class ChronoControlleur {
 		Main.start();
 	}
 	
+	public void pressedReset(ActionEvent event) {
+		resetBtn.setDisable(true);
+		Main.timeResetRequest();
+	}
+	
 	public void pressedSub(ActionEvent event) {
 		Main.initNewSub();
 	}
@@ -187,17 +192,15 @@ public class ChronoControlleur {
 	
 	public void demarrer() {
 		startMenu.setText("Démarrer");
-		playBtn.setText("Démarrer");
 	}
 	
 	public void reprendre() {
 		startMenu.setText("Reprendre");
-		playBtn.setText("Reprendre");
 	}
 	
 	public void suspendre() {
 		startMenu.setText("Suspendre");
-		playBtn.setText("Suspendre");
+		resetBtn.setDisable(false);
 	}
 	
 	
@@ -243,10 +246,8 @@ public class ChronoControlleur {
 			renameFld.setPromptText("Nouveau nom");
 			if(!Main.nouveau&&!Main.sub) {
 				startMenu.setText("Renommer");
-				playBtn.setText("Renommer");
 			} else {
 				startMenu.setText("Annuler");
-				playBtn.setText("Annuler");
 			}
 		}
 		else if(!Main.sub) renameFld.setPromptText("Futur nom du Projet");
@@ -335,9 +336,8 @@ public class ChronoControlleur {
 	
 		startMenu.setText("Annuler");
 		startMenu.setDisable(false);
-		playBtn.setText("Démarrer");
-		playBtn.setDisable(true);
-	
+		
+		resetBtn.setDisable(true);
 		subBtn.setDisable(true);
 		newProjectBtn.setDisable(true);
 		subBtn.setDisable(true);
@@ -490,7 +490,7 @@ public class ChronoControlleur {
 		startMenu.setDisable(false);
 		startMenu.setText("Nouveau Projet");
 		renameBtn.setDisable(true);
-		playBtn.setDisable(true);
+		resetBtn.setDisable(true);
 		subBtn.setDisable(true);
 		newProjectBtn.setDisable(false);
 		subBtn.setDisable(true);
@@ -527,7 +527,8 @@ public class ChronoControlleur {
 			startDateLbl.setText(startedAt(Main.startDate));
 			newProjectBtn.setDisable(false);
 			subBtn.setDisable(false);
-			playBtn.setDisable(false);
+			if(Main.time+Main.chrono>0)resetBtn.setDisable(false);
+			else resetBtn.setDisable(true);
 			deleteBtn.setText("supprimer");
 			deleteBtn.setDisable(false);
 		}
